@@ -160,6 +160,9 @@ src_prepare() {
 	# Still need EPREFIX in the sed replacements above because the
 	# regular expression used by hprefixify doesn't match there.
 	hprefixify bin_steam.sh steam-wrapper.sh
+
+	# Allow the desktop launcher to use wrappers from the PATH.
+	sed -i "s:/usr/bin/::g" steam.desktop || die
 }
 
 src_install() {
